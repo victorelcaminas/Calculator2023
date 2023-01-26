@@ -20,6 +20,7 @@ public class FrameCalculator extends javax.swing.JFrame {
     public FrameCalculator() {
         initComponents();
         myInits();
+        setLocationRelativeTo(null);
     }
 
     
@@ -58,6 +59,7 @@ public class FrameCalculator extends javax.swing.JFrame {
         buttonDiv = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         textFieldDiplay.setEditable(false);
         textFieldDiplay.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
@@ -84,20 +86,55 @@ public class FrameCalculator extends javax.swing.JFrame {
         });
 
         button4.setText("4");
+        button4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button4ActionPerformed(evt);
+            }
+        });
 
         button5.setText("5");
+        button5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button5ActionPerformed(evt);
+            }
+        });
 
         button6.setText("6");
+        button6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button6ActionPerformed(evt);
+            }
+        });
 
         button7.setText("7");
+        button7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button7ActionPerformed(evt);
+            }
+        });
 
         button8.setText("8");
+        button8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button8ActionPerformed(evt);
+            }
+        });
 
         button9.setText("9");
+        button9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button9ActionPerformed(evt);
+            }
+        });
 
         buttonDot.setText(".");
 
         button0.setText("0");
+        button0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button0ActionPerformed(evt);
+            }
+        });
 
         buttonC.setText("C");
 
@@ -201,8 +238,36 @@ public class FrameCalculator extends javax.swing.JFrame {
     }//GEN-LAST:event_button2ActionPerformed
 
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
-        // TODO add your handling code here:
+        addNumberToDisplay("3");
     }//GEN-LAST:event_button3ActionPerformed
+
+    private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
+        addNumberToDisplay("4");
+    }//GEN-LAST:event_button4ActionPerformed
+
+    private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
+        addNumberToDisplay("5");
+    }//GEN-LAST:event_button5ActionPerformed
+
+    private void button6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button6ActionPerformed
+        addNumberToDisplay("6");
+    }//GEN-LAST:event_button6ActionPerformed
+
+    private void button7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button7ActionPerformed
+        addNumberToDisplay("7");
+    }//GEN-LAST:event_button7ActionPerformed
+
+    private void button8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button8ActionPerformed
+        addNumberToDisplay("8");
+    }//GEN-LAST:event_button8ActionPerformed
+
+    private void button9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button9ActionPerformed
+        addNumberToDisplay("9");
+    }//GEN-LAST:event_button9ActionPerformed
+
+    private void button0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button0ActionPerformed
+        addNumberToDisplay("0");
+    }//GEN-LAST:event_button0ActionPerformed
 
     private void addNumberToDisplay(String numberStr) {
         String s = textFieldDiplay.getText();
