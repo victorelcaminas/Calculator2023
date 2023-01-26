@@ -9,14 +9,25 @@ package org.ieselcaminas.calculator;
  * @author victor
  */
 public class FrameCalculator extends javax.swing.JFrame {
+    
+    private Operators operation;
+    private double accumulator;
+    private boolean cleanDisplay;
 
     /**
      * Creates new form FrameCalculator
      */
     public FrameCalculator() {
         initComponents();
+        myInits();
     }
 
+    
+    private void myInits() {
+        operation = Operators.NONE;
+        accumulator = 0;
+        cleanDisplay = false;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,9 +59,15 @@ public class FrameCalculator extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        textFieldDiplay.setText("jTextField1");
+        textFieldDiplay.setEditable(false);
+        textFieldDiplay.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
         buton1.setText("1");
+        buton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buton1ActionPerformed(evt);
+            }
+        });
 
         button2.setText("2");
         button2.addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +77,11 @@ public class FrameCalculator extends javax.swing.JFrame {
         });
 
         button3.setText("3");
+        button3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button3ActionPerformed(evt);
+            }
+        });
 
         button4.setText("4");
 
@@ -82,11 +104,6 @@ public class FrameCalculator extends javax.swing.JFrame {
         buttonEqual.setText("=");
 
         buttonBack.setText("<--");
-        buttonBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonBackActionPerformed(evt);
-            }
-        });
 
         buttonAdd.setText("+");
 
@@ -175,14 +192,23 @@ public class FrameCalculator extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonBackActionPerformed
+    private void buton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buton1ActionPerformed
+        addNumberToDisplay("1");
+    }//GEN-LAST:event_buton1ActionPerformed
 
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
-        // TODO add your handling code here:
+        addNumberToDisplay("2");
     }//GEN-LAST:event_button2ActionPerformed
 
+    private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button3ActionPerformed
+
+    private void addNumberToDisplay(String numberStr) {
+        String s = textFieldDiplay.getText();
+        s += numberStr;
+        textFieldDiplay.setText(s);
+    }
     /**
      * @param args the command line arguments
      */
