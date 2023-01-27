@@ -210,36 +210,57 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="C"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonEqual">
       <Properties>
         <Property name="text" type="java.lang.String" value="="/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonEqualActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonBack">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;--"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonBackActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonAdd">
       <Properties>
         <Property name="text" type="java.lang.String" value="+"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAddActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonSubtract">
       <Properties>
         <Property name="text" type="java.lang.String" value="-"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSubtractActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonMult">
       <Properties>
         <Property name="text" type="java.lang.String" value="*"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonMultActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonDiv">
       <Properties>
         <Property name="text" type="java.lang.String" value="/"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonDivActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

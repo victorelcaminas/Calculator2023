@@ -29,6 +29,38 @@ public class FrameCalculator extends javax.swing.JFrame {
         accumulator = 0;
         cleanDisplay = false;
     }
+    
+    private void showOnDisplay(double value) {
+        String valStr = "" + value;
+        textFieldDiplay.setText(valStr);
+        cleanDisplay = true;
+    }
+    
+    private double getDisplayValue() {
+        String valStr = textFieldDiplay.getText();
+        return Double.parseDouble(valStr);
+    }
+    
+    private void calculate() {
+        switch (operation) {
+            case ADD:
+                accumulator += getDisplayValue();
+                break;
+            case SUB:
+                accumulator -= getDisplayValue();
+                break;
+            case MULT:
+                accumulator *= getDisplayValue();
+                break;
+            case DIV:
+                accumulator /= getDisplayValue();
+                break;
+            default:
+                //
+                break;
+        }
+        showOnDisplay(accumulator);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -137,18 +169,53 @@ public class FrameCalculator extends javax.swing.JFrame {
         });
 
         buttonC.setText("C");
+        buttonC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCActionPerformed(evt);
+            }
+        });
 
         buttonEqual.setText("=");
+        buttonEqual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEqualActionPerformed(evt);
+            }
+        });
 
         buttonBack.setText("<--");
+        buttonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBackActionPerformed(evt);
+            }
+        });
 
         buttonAdd.setText("+");
+        buttonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAddActionPerformed(evt);
+            }
+        });
 
         buttonSubtract.setText("-");
+        buttonSubtract.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSubtractActionPerformed(evt);
+            }
+        });
 
         buttonMult.setText("*");
+        buttonMult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMultActionPerformed(evt);
+            }
+        });
 
         buttonDiv.setText("/");
+        buttonDiv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDivActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -269,10 +336,53 @@ public class FrameCalculator extends javax.swing.JFrame {
         addNumberToDisplay("0");
     }//GEN-LAST:event_button0ActionPerformed
 
-    private void addNumberToDisplay(String numberStr) {
+    private void buttonCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCActionPerformed
+        myInits();
+        textFieldDiplay.setText("");
+    }//GEN-LAST:event_buttonCActionPerformed
+
+    private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
+        cleanDisplay = true;
+        operation = Operators.ADD;
+    }//GEN-LAST:event_buttonAddActionPerformed
+
+    private void buttonSubtractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSubtractActionPerformed
+        cleanDisplay = true;
+        operation = Operators.SUB;
+    }//GEN-LAST:event_buttonSubtractActionPerformed
+
+    private void buttonMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMultActionPerformed
+        cleanDisplay = true;
+        operation = Operators.MULT;
+    }//GEN-LAST:event_buttonMultActionPerformed
+
+    private void buttonDivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDivActionPerformed
+        cleanDisplay = true;
+        operation = Operators.DIV;
+    }//GEN-LAST:event_buttonDivActionPerformed
+
+    private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
         String s = textFieldDiplay.getText();
-        s += numberStr;
-        textFieldDiplay.setText(s);
+        if (s.length() > 0) {
+            s = s.substring(0, s.length() - 1);
+            textFieldDiplay.setText(s);
+        }
+    }//GEN-LAST:event_buttonBackActionPerformed
+
+    private void buttonEqualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEqualActionPerformed
+        calculate();
+    }//GEN-LAST:event_buttonEqualActionPerformed
+
+    private void addNumberToDisplay(String numberStr) {
+        if (cleanDisplay) {
+            accumulator = Double.parseDouble(textFieldDiplay.getText());
+            textFieldDiplay.setText(numberStr);
+            cleanDisplay = false;
+        } else {
+            String s = textFieldDiplay.getText();
+            s += numberStr;
+            textFieldDiplay.setText(s);
+        }
     }
     /**
      * @param args the command line arguments
