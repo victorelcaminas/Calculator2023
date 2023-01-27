@@ -32,6 +32,7 @@ public class FrameCalculator extends javax.swing.JFrame {
     
     private void showOnDisplay(double value) {
         String valStr = "" + value;
+        valStr = valStr.replaceAll("\\.0", "");
         textFieldDiplay.setText(valStr);
         cleanDisplay = true;
     }
@@ -56,7 +57,7 @@ public class FrameCalculator extends javax.swing.JFrame {
                 accumulator /= getDisplayValue();
                 break;
             default:
-                //
+                accumulator = getDisplayValue();
                 break;
         }
         showOnDisplay(accumulator);
@@ -343,21 +344,29 @@ public class FrameCalculator extends javax.swing.JFrame {
 
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
         cleanDisplay = true;
+        calculate();
         operation = Operators.ADD;
     }//GEN-LAST:event_buttonAddActionPerformed
 
     private void buttonSubtractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSubtractActionPerformed
-        cleanDisplay = true;
-        operation = Operators.SUB;
+        if (textFieldDiplay.getText().equals("") || cleanDisplay) {
+            addNumberToDisplay("-");
+        } else {
+            cleanDisplay = true;
+            calculate();
+            operation = Operators.SUB;
+        }
     }//GEN-LAST:event_buttonSubtractActionPerformed
 
     private void buttonMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMultActionPerformed
         cleanDisplay = true;
+        calculate();
         operation = Operators.MULT;
     }//GEN-LAST:event_buttonMultActionPerformed
 
     private void buttonDivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDivActionPerformed
         cleanDisplay = true;
+        calculate();
         operation = Operators.DIV;
     }//GEN-LAST:event_buttonDivActionPerformed
 
@@ -371,6 +380,8 @@ public class FrameCalculator extends javax.swing.JFrame {
 
     private void buttonEqualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEqualActionPerformed
         calculate();
+        operation = Operators.NONE;
+        cleanDisplay = true;
     }//GEN-LAST:event_buttonEqualActionPerformed
 
     private void addNumberToDisplay(String numberStr) {
