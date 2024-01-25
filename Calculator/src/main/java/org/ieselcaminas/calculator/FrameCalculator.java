@@ -32,7 +32,10 @@ public class FrameCalculator extends javax.swing.JFrame {
     
     private void showResultOnDisplay(double value) {
         String valStr = "" + value;
-        valStr = valStr.replaceAll("\\.0", "");
+        /* if (valStr.endsWith(".0")) {
+            valStr = valStr.substring(0, valStr.length() - 2);
+        } */
+        valStr = valStr.replaceAll("\\.0$", "");
         textFieldDiplay.setText(valStr);
         cleanDisplay = true;
     }
