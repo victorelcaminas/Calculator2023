@@ -42,7 +42,13 @@ public class FrameCalculator extends javax.swing.JFrame {
     
     private double getDisplayValue() {
         String valStr = textFieldDiplay.getText();
-        return Double.parseDouble(valStr);
+        double value = 0;
+        try {
+            value = Double.parseDouble(valStr);
+        } catch (NumberFormatException ex) {        
+        }
+        
+        return value;
     }
     
     private void calculate() {
@@ -164,6 +170,11 @@ public class FrameCalculator extends javax.swing.JFrame {
         });
 
         buttonDot.setText(".");
+        buttonDot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDotActionPerformed(evt);
+            }
+        });
 
         button0.setText("0");
         button0.addActionListener(new java.awt.event.ActionListener() {
@@ -387,9 +398,20 @@ public class FrameCalculator extends javax.swing.JFrame {
         cleanDisplay = true;
     }//GEN-LAST:event_buttonEqualActionPerformed
 
+    private void buttonDotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDotActionPerformed
+        // TODO add your handling code here:
+        if (!textFieldDiplay.getText().contains(".")) {
+            addNumberToDisplay(".");
+        }
+    }//GEN-LAST:event_buttonDotActionPerformed
+
     private void addNumberToDisplay(String numberStr) {
         if (cleanDisplay) {
-            accumulator = Double.parseDouble(textFieldDiplay.getText());
+            try {
+                accumulator = Double.parseDouble(textFieldDiplay.getText());
+            } catch (NumberFormatException ex) {
+                accumulator = 0;
+            }
             textFieldDiplay.setText(numberStr);
             cleanDisplay = false;
         } else {
